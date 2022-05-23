@@ -20,4 +20,12 @@ describe('Login Feature', () => {
             .contains('Epic sadface: Username and password do not match any user in this service')
             .should('be.visible');
     });
+
+    it('API testing', () => {
+        cy.request('GET/POST', 'dummy url', {name: 'test'})
+            .then((resp) => {
+                expect(resp.status).to.eq(200);
+                expect(resp.body.name).to.eq('Rama');
+            });
+    });
 });
